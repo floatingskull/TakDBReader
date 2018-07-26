@@ -117,6 +117,11 @@ namespace TakDBReader
                     output += "(player_black like '%bot' or player_black like 'stakbot_') AND ";
             }
 
+            if (SelectUser.CheckState == CheckState.Checked)
+            {
+                output += "(player_black like '" + UserText.Text + "' or player_white like '" + UserText.Text + "') AND ";
+            }
+
             return output;
         }
 
@@ -513,6 +518,18 @@ namespace TakDBReader
                 dateto.Enabled = false;
                 datefromtext.Enabled = false;
                 datetotext.Enabled = false;
+            }
+        }
+
+        private void SelectUser_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectUser.CheckState == CheckState.Checked)
+            {
+                UserText.Enabled = true;
+            }
+            else if (SelectUser.CheckState == CheckState.Unchecked)
+            {
+                UserText.Enabled = false;
             }
         }
     }

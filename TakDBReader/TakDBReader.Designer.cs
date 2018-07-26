@@ -78,6 +78,8 @@
             this.datefromtext = new System.Windows.Forms.Label();
             this.datetotext = new System.Windows.Forms.Label();
             this.restrictdates = new System.Windows.Forms.CheckBox();
+            this.SelectUser = new System.Windows.Forms.CheckBox();
+            this.UserText = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minmovesinput)).BeginInit();
             this.SuspendLayout();
@@ -124,7 +126,7 @@
             // openfilelabel
             // 
             this.openfilelabel.AutoEllipsis = true;
-            this.openfilelabel.Location = new System.Drawing.Point(16, 262);
+            this.openfilelabel.Location = new System.Drawing.Point(16, 293);
             this.openfilelabel.Name = "openfilelabel";
             this.openfilelabel.Size = new System.Drawing.Size(409, 26);
             this.openfilelabel.TabIndex = 1;
@@ -133,7 +135,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 249);
+            this.label1.Location = new System.Drawing.Point(16, 280);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 2;
@@ -160,7 +162,7 @@
             // RefreshButton
             // 
             this.RefreshButton.Enabled = false;
-            this.RefreshButton.Location = new System.Drawing.Point(431, 265);
+            this.RefreshButton.Location = new System.Drawing.Point(431, 296);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(75, 23);
             this.RefreshButton.TabIndex = 5;
@@ -370,9 +372,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(16, 36);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 13);
+            this.label11.Size = new System.Drawing.Size(72, 13);
             this.label11.TabIndex = 33;
-            this.label11.Text = "Total Games:";
+            this.label11.Text = "Games in DB:";
             // 
             // openings
             // 
@@ -560,12 +562,33 @@
             this.restrictdates.UseVisualStyleBackColor = true;
             this.restrictdates.CheckedChanged += new System.EventHandler(this.restrictdates_CheckedChanged);
             // 
+            // SelectUser
+            // 
+            this.SelectUser.AutoSize = true;
+            this.SelectUser.Location = new System.Drawing.Point(19, 250);
+            this.SelectUser.Name = "SelectUser";
+            this.SelectUser.Size = new System.Drawing.Size(84, 17);
+            this.SelectUser.TabIndex = 60;
+            this.SelectUser.Text = "Select User:";
+            this.SelectUser.UseVisualStyleBackColor = true;
+            this.SelectUser.CheckedChanged += new System.EventHandler(this.SelectUser_CheckedChanged);
+            // 
+            // UserText
+            // 
+            this.UserText.Enabled = false;
+            this.UserText.Location = new System.Drawing.Point(109, 248);
+            this.UserText.Name = "UserText";
+            this.UserText.Size = new System.Drawing.Size(376, 20);
+            this.UserText.TabIndex = 61;
+            // 
             // TakDBReaderForm
             // 
             this.AcceptButton = this.RefreshButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 296);
+            this.ClientSize = new System.Drawing.Size(527, 330);
+            this.Controls.Add(this.UserText);
+            this.Controls.Add(this.SelectUser);
             this.Controls.Add(this.restrictdates);
             this.Controls.Add(this.datetotext);
             this.Controls.Add(this.datefromtext);
@@ -675,6 +698,8 @@
         private System.Windows.Forms.Label datefromtext;
         private System.Windows.Forms.Label datetotext;
         private System.Windows.Forms.CheckBox restrictdates;
+        private System.Windows.Forms.CheckBox SelectUser;
+        private System.Windows.Forms.TextBox UserText;
     }
 }
 
