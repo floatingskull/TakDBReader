@@ -45,7 +45,7 @@ namespace TakDBReader
             blackplayerhb.SelectedIndex = 2;
             openings.SelectedIndex = 0;
             gametype.SelectedIndex = 4;
-            resulttype.SelectedIndex = 4;
+            resulttype.SelectedIndex = 6;
             for (int i = 0; i < sizes.Items.Count; i++)
                 sizes.SetSelected(i, true);
         }
@@ -408,16 +408,22 @@ namespace TakDBReader
             switch (resulttype.SelectedIndex)
             {
                 case (0):
-                    output += roadwin + " AND ";
+                    output += whitewin + " AND ";
                     break;
                 case (1):
-                    output += flatwin + " AND ";
+                    output += blackwin + " AND ";
                     break;
                 case (2):
-                    output += resignwin + " AND ";
+                    output += drawwin + " AND ";
                     break;
                 case (3):
-                    output += drawwin + " AND ";
+                    output += roadwin + " AND ";
+                    break;
+                case (4):
+                    output += flatwin + " AND ";
+                    break;
+                case (5):
+                    output += resignwin + " AND ";
                     break;
             }
 
@@ -493,14 +499,18 @@ namespace TakDBReader
             flatwinspercent.Text = GetPercent(flatwingames);
             resignwinspercent.Text = GetPercent(resignwingames);
 
-            if (whitewingames >= blackwingames)
+            if (resulttype.SelectedIndex >= 2)
             {
-                fpa.Text = GetPercent((whitewingames - blackwingames) / 2);
+                if (whitewingames >= blackwingames)
+                {
+                    fpa.Text = GetPercent((whitewingames - blackwingames) / 2);
+                }
+                else
+                {
+                    fpa.Text = "-" + GetPercent((blackwingames - whitewingames) / 2);
+                }
             }
-            else
-            {
-                fpa.Text = "-" + GetPercent((blackwingames - whitewingames) / 2);
-            }
+            else fpa.Text = "NA";
 
         }
 

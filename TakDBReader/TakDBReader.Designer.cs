@@ -622,15 +622,17 @@
             // 
             this.resulttype.FormattingEnabled = true;
             this.resulttype.Items.AddRange(new object[] {
+            "White Win",
+            "Black Win",
+            "Draw",
             "Road Win",
             "Flat Win",
             "Resignation",
-            "Draw",
             "Any"});
             this.resulttype.Location = new System.Drawing.Point(539, 161);
             this.resulttype.Margin = new System.Windows.Forms.Padding(5);
             this.resulttype.Name = "resulttype";
-            this.resulttype.Size = new System.Drawing.Size(117, 69);
+            this.resulttype.Size = new System.Drawing.Size(117, 95);
             this.resulttype.TabIndex = 65;
             // 
             // TakDBReaderForm
