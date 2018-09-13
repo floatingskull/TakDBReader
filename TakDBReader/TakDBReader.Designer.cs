@@ -80,6 +80,10 @@
             this.restrictdates = new System.Windows.Forms.CheckBox();
             this.SelectUser = new System.Windows.Forms.CheckBox();
             this.UserText = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.gametype = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.resulttype = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minmovesinput)).BeginInit();
             this.SuspendLayout();
@@ -90,7 +94,7 @@
             this.fileToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(527, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(666, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -128,7 +132,7 @@
             this.openfilelabel.AutoEllipsis = true;
             this.openfilelabel.Location = new System.Drawing.Point(16, 293);
             this.openfilelabel.Name = "openfilelabel";
-            this.openfilelabel.Size = new System.Drawing.Size(409, 26);
+            this.openfilelabel.Size = new System.Drawing.Size(566, 26);
             this.openfilelabel.TabIndex = 1;
             this.openfilelabel.Text = "(none)";
             // 
@@ -162,7 +166,7 @@
             // RefreshButton
             // 
             this.RefreshButton.Enabled = false;
-            this.RefreshButton.Location = new System.Drawing.Point(431, 296);
+            this.RefreshButton.Location = new System.Drawing.Point(581, 296);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(75, 23);
             this.RefreshButton.TabIndex = 5;
@@ -581,12 +585,64 @@
             this.UserText.Size = new System.Drawing.Size(376, 20);
             this.UserText.TabIndex = 61;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(536, 36);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 13);
+            this.label16.TabIndex = 62;
+            this.label16.Text = "Game Type:";
+            // 
+            // gametype
+            // 
+            this.gametype.FormattingEnabled = true;
+            this.gametype.Items.AddRange(new object[] {
+            "Human vs Human",
+            "Human vs Bot",
+            "Bot vs Bot",
+            "At Least One Human",
+            "Any"});
+            this.gametype.Location = new System.Drawing.Point(539, 57);
+            this.gametype.Margin = new System.Windows.Forms.Padding(5);
+            this.gametype.Name = "gametype";
+            this.gametype.Size = new System.Drawing.Size(117, 69);
+            this.gametype.TabIndex = 63;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(536, 143);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(40, 13);
+            this.label17.TabIndex = 64;
+            this.label17.Text = "Result:";
+            // 
+            // resulttype
+            // 
+            this.resulttype.FormattingEnabled = true;
+            this.resulttype.Items.AddRange(new object[] {
+            "Road Win",
+            "Flat Win",
+            "Resignation",
+            "Draw",
+            "Any"});
+            this.resulttype.Location = new System.Drawing.Point(539, 161);
+            this.resulttype.Margin = new System.Windows.Forms.Padding(5);
+            this.resulttype.Name = "resulttype";
+            this.resulttype.Size = new System.Drawing.Size(117, 69);
+            this.resulttype.TabIndex = 65;
+            // 
             // TakDBReaderForm
             // 
             this.AcceptButton = this.RefreshButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 330);
+            this.ClientSize = new System.Drawing.Size(666, 330);
+            this.Controls.Add(this.resulttype);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.gametype);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.UserText);
             this.Controls.Add(this.SelectUser);
             this.Controls.Add(this.restrictdates);
@@ -700,6 +756,10 @@
         private System.Windows.Forms.CheckBox restrictdates;
         private System.Windows.Forms.CheckBox SelectUser;
         private System.Windows.Forms.TextBox UserText;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ListBox gametype;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ListBox resulttype;
     }
 }
 

@@ -40,11 +40,12 @@ namespace TakDBReader
 
         public TakDBReaderForm()
         {
-
             InitializeComponent();
             whiteplayerhb.SelectedIndex = 2;
             blackplayerhb.SelectedIndex = 2;
             openings.SelectedIndex = 0;
+            gametype.SelectedIndex = 4;
+            resulttype.SelectedIndex = 4;
             for (int i = 0; i < sizes.Items.Count; i++)
                 sizes.SetSelected(i, true);
         }
@@ -93,6 +94,9 @@ namespace TakDBReader
 
             query += GetOpening();
 
+            query += GetResult();
+
+            //Notation has to be the last portion of the query
             query += GetNotation();
 
             return (query);
@@ -102,21 +106,47 @@ namespace TakDBReader
         {
             string output = "";
 
-            if (!(whiteplayerhb.GetSelected(2)))
+            //restrict player_white
+            switch (whiteplayerhb.SelectedIndex)
             {
-                if (whiteplayerhb.GetSelected(0))
+                case(0):
                     output += "NOT (player_white like '%bot' or player_white like 'stakbot_') AND ";
-                else if (whiteplayerhb.GetSelected(1))
+                    break;
+                case(1):
                     output += "(player_white like '%bot' or player_white like 'stakbot_') AND ";
-            }
-            if (!(blackplayerhb.GetSelected(2)))
-            {
-                if (blackplayerhb.GetSelected(0))
-                    output += "NOT (player_black like '%bot' or player_black like 'stakbot_') AND ";
-                else if (blackplayerhb.GetSelected(1))
-                    output += "(player_black like '%bot' or player_black like 'stakbot_') AND ";
+                    break;
             }
 
+            //restrict player_black
+            switch (blackplayerhb.SelectedIndex)
+            {
+                case (0):
+                    output += "NOT (player_black like '%bot' or player_black like 'stakbot_') AND ";
+                    break;
+                case (1):
+                    output += "(player_black like '%bot' or player_black like 'stakbot_') AND ";
+                    break;
+            }
+
+            //restrict type of game (i.e. bots and human status)
+            switch (gametype.SelectedIndex)
+            {
+                case (0):
+                    output += "(NOT (player_white like '%bot' or player_white like 'stakbot_') AND NOT (player_black like '%bot' or player_black like 'stakbot_')) AND ";
+                    break;
+                case (1):
+                    output += "((NOT (player_white like '%bot' or player_white like 'stakbot_') AND (player_black like '%bot' or player_black like 'stakbot_')) OR "
+                        + "((player_white like '%bot' or player_white like 'stakbot_') AND NOT (player_black like '%bot' or player_black like 'stakbot_'))) AND ";
+                    break;
+                case (2):
+                    output += "((player_white like '%bot' or player_white like 'stakbot_') AND (player_black like '%bot' or player_black like 'stakbot_')) AND ";
+                    break;
+                case (3):
+                    output += "NOT ((player_white like '%bot' or player_white like 'stakbot_') AND (player_black like '%bot' or player_black like 'stakbot_')) AND ";
+                    break;
+            }
+
+            //Narrow to a specific user
             if (SelectUser.CheckState == CheckState.Checked)
             {
                 output += "(player_black like '" + UserText.Text + "' or player_white like '" + UserText.Text + "') AND ";
@@ -369,6 +399,29 @@ namespace TakDBReader
                 return output;
             }
             else return "";
+        }
+
+        private string GetResult()
+        {
+            string output = "";
+
+            switch (resulttype.SelectedIndex)
+            {
+                case (0):
+                    output += roadwin + " AND ";
+                    break;
+                case (1):
+                    output += flatwin + " AND ";
+                    break;
+                case (2):
+                    output += resignwin + " AND ";
+                    break;
+                case (3):
+                    output += drawwin + " AND ";
+                    break;
+            }
+
+            return output;
         }
 
         private string GetRow(int num)
